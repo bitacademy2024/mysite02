@@ -22,10 +22,29 @@ public class UserController extends HttpServlet {
 			request
 				.getRequestDispatcher("/WEB-INF/views/user/joinform.jsp")
 				.forward(request, response);
+		} else if(action.equals("loginform")) {
+			request
+				.getRequestDispatcher("/WEB-INF/views/user/loginform.jsp")
+				.forward(request, response);
 		} else if(action.equals("joinsuccess")) {
 			request
-			.getRequestDispatcher("/WEB-INF/views/user/joinsuccess.jsp")
-			.forward(request, response);
+				.getRequestDispatcher("/WEB-INF/views/user/joinsuccess.jsp")
+				.forward(request, response);
+		} else if(action.equals("login")) {
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			
+			UserVo authUser = new UserDao().findByEmailAndPassword(email, password);
+			if(authUser == null) {
+				request
+					.getRequestDispatcher("/WEB-INF/views/user/loginform.jsp")
+					.forward(request, response);
+				return;
+			}
+			
+			/* 로그인 처리 */
+			System.out.println("login 처리!!!!");
+			
 		} else if(action.equals("join")) {
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
