@@ -36,6 +36,8 @@ public class UserController extends HttpServlet {
 			
 			UserVo authUser = new UserDao().findByEmailAndPassword(email, password);
 			if(authUser == null) {
+				request.setAttribute("result", "fail");
+				request.setAttribute("email", email);
 				request
 					.getRequestDispatcher("/WEB-INF/views/user/loginform.jsp")
 					.forward(request, response);
