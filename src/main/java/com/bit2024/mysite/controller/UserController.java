@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bit2024.mysite.dao.UserDao;
 import com.bit2024.mysite.vo.UserVo;
@@ -45,7 +46,10 @@ public class UserController extends HttpServlet {
 			}
 			
 			/* 로그인 처리 */
-			System.out.println("login 처리!!!!");
+			HttpSession session = request.getSession(true);
+			session.setAttribute("authUser", authUser);
+			
+			response.sendRedirect("/mysite02/main");
 			
 		} else if(action.equals("join")) {
 			String name = request.getParameter("name");
