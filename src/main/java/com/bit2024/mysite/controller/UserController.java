@@ -28,7 +28,7 @@ public class UserController extends HttpServlet {
 				.getRequestDispatcher("/WEB-INF/views/user/loginform.jsp")
 				.forward(request, response);
 		} else if(action.equals("updateform")) {
-			
+			// request.
 			// UserVo userVo = new UserDao().findByNo(no);
 			// request.setAttribute("userVo", userVo);
 			request

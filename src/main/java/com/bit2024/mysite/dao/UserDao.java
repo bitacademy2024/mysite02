@@ -17,7 +17,7 @@ public class UserDao {
 		
 		try {
 			// 0. JDBC Driver Loading
-			Class.forName("org.mariadb.jdbc.Driver2");
+			Class.forName("org.mariadb.jdbc.Driver");
 
 			// 1. 연결: (서버IP+port+dbname) 연결URL, 사용자아이디, 비밀번호
 			String url = "jdbc:mariadb://192.168.0.112:3307/webdb?chatset=utf8";
